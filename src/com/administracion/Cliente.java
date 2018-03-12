@@ -13,13 +13,14 @@ public class Cliente extends Persona {
 
     private String status = "Cliente";
     private float suscripcion = (float) 29.99;
-    private Grupo grupo1, grupo2, grupo3;
+    private Grupo grupo1 = new Grupo(), grupo2 = new Grupo(), grupo3 = new Grupo();
+
+    public Cliente() {
+    }
 
     public Cliente(int ID, String nome, String apellido) {
         super(ID, nome, apellido);
-        this.grupo1 = new Grupo();
-        this.grupo2 = new Grupo();
-        this.grupo3 = new Grupo();
+
     }
 
     public float getSuscripcion() {

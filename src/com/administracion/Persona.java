@@ -11,8 +11,11 @@ package com.administracion;
  */
 public class Persona {
 
-    private int ID;
-    private String nome, apelido;
+    private int ID=0;
+    private String nome="no asignado", apelido="";
+
+    public Persona() {
+    }
 
     public Persona(int ID, String nome, String apellido) {
         this.ID = ID;

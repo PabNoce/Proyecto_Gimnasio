@@ -12,46 +12,20 @@ package com.administracion;
 public class Grupo {
 
     private int idGrupo = 0;
-    private Area area;
     private String nomeGrupo = "inexistente";
+    private Area area=new Area();
+    private Monitor monitor=new Monitor();
+    private Cliente[] listaClientes=new Cliente[10];
+    
+  
 
     public Grupo() {
-        this.area = new Area();
+        for(int i=0;i<10;i++){
+              listaClientes[i]=new Cliente();
+        }
+      
     }
 
-    public Grupo(int idGrupo, Area area, String nomeGrupo) {
-        this.idGrupo = idGrupo;
-        this.area = area;
-        this.nomeGrupo = nomeGrupo;
-    }
-
-    public int getIdGrupo() {
-        return idGrupo;
-    }
-
-    public void setIdGrupo(int idGrupo) {
-        this.idGrupo = idGrupo;
-    }
-
-    public Area getArea() {
-        return area;
-    }
-
-    public void setArea(Area area) {
-        this.area = area;
-    }
-
-    public String getNomeGrupo() {
-        return nomeGrupo;
-    }
-
-    public void setNomeGrupo(String nomeGrupo) {
-        this.nomeGrupo = nomeGrupo;
-    }
-
-    @Override
-    public String toString() {
-        return "idGrupo=" + idGrupo + ", area=" + area + ", nomeGrupo=" + nomeGrupo;
-    }
+  
 
 }

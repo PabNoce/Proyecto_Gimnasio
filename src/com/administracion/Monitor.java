@@ -12,12 +12,15 @@ package com.administracion;
 public class Monitor extends Persona {
 
     private String status = "Monitor";
-    private Grupo grupo;
+    private Grupo grupo = new Grupo();
     private float sueldo = 850;
+
+    public Monitor() {
+    }
 
     public Monitor(int ID, String nome, String apellido) {
         super(ID, nome, apellido);
-        this.grupo = new Grupo();
+
     }
 
     public Grupo getGrupo() {
