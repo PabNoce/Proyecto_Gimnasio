@@ -18,8 +18,8 @@ public class Monitor extends Persona {
     public Monitor() {
     }
 
-    public Monitor(int ID, String nome, String apellido) {
-        super(ID, nome, apellido);
+    public Monitor(int ID, String nome) {
+        super(ID, nome);
 
     }
 

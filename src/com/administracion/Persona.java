@@ -11,16 +11,16 @@ package com.administracion;
  */
 public class Persona {
 
-    private int ID=0;
-    private String nome="no asignado", apelido="";
+    private int ID = 0;
+    private String nome = "no asignado";
 
     public Persona() {
     }
 
-    public Persona(int ID, String nome, String apellido) {
+    public Persona(int ID, String nome) {
         this.ID = ID;
         this.nome = nome;
-        this.apelido = apellido;
+
     }
 
     public int getID() {
@@ -39,17 +39,9 @@ public class Persona {
         this.nome = nome;
     }
 
-    public String getApelido() {
-        return apelido;
-    }
-
-    public void setApelido(String apelido) {
-        this.apelido = apelido;
-    }
-
     @Override
     public String toString() {
-        return "ID=" + ID + ", nome=" + nome + ", apelido=" + apelido;
+        return "ID=" + ID + ", nome=" + nome;
     }
 
 }

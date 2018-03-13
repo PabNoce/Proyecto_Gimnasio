@@ -18,8 +18,8 @@ public class Cliente extends Persona {
     public Cliente() {
     }
 
-    public Cliente(int ID, String nome, String apellido) {
-        super(ID, nome, apellido);
+    public Cliente(int ID, String nome) {
+        super(ID, nome);
 
     }
 

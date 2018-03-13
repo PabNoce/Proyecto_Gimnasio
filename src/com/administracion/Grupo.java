@@ -16,15 +16,19 @@ public class Grupo {
     private Area area=new Area();
     private Monitor monitor=new Monitor();
     private Cliente[] listaClientes=new Cliente[10];
-    
-  
 
-    public Grupo() {
+  public Grupo() {
         for(int i=0;i<10;i++){
               listaClientes[i]=new Cliente();
         }
-      
     }
+  public Grupo(int idGrupo, String nomeGrupo){
+      this.idGrupo=idGrupo;
+      this.nomeGrupo=nomeGrupo;
+  }
+    
+
+    
 
   
 
