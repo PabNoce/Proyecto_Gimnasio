@@ -26,6 +26,51 @@ public class Grupo {
       this.idGrupo=idGrupo;
       this.nomeGrupo=nomeGrupo;
   }
+
+    public int getIdGrupo() {
+        return idGrupo;
+    }
+
+    public void setIdGrupo(int idGrupo) {
+        this.idGrupo = idGrupo;
+    }
+
+    public String getNomeGrupo() {
+        return nomeGrupo;
+    }
+
+    public void setNomeGrupo(String nomeGrupo) {
+        this.nomeGrupo = nomeGrupo;
+    }
+
+    public Area getArea() {
+        return area;
+    }
+
+    public void setArea(Area area) {
+        this.area = area;
+    }
+
+    public Monitor getMonitor() {
+        return monitor;
+    }
+
+    public void setMonitor(Monitor monitor) {
+        this.monitor = monitor;
+    }
+
+    public Cliente[] getListaClientes() {
+        return listaClientes;
+    }
+
+    public void setListaClientes(Cliente[] listaClientes) {
+        this.listaClientes = listaClientes;
+    }
+
+    @Override
+    public String toString() {
+        return "idGrupo=" + idGrupo + ", nomeGrupo=" + nomeGrupo + ", area=" + area.getIdArea() + ", monitor=" + monitor.getID();
+    }
     
 
     

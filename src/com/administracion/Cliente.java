@@ -11,7 +11,6 @@ package com.administracion;
  */
 public class Cliente extends Persona {
 
-    private String status = "Cliente";
     private float suscripcion = (float) 29.99;
     private Grupo grupo1 = new Grupo(), grupo2 = new Grupo(), grupo3 = new Grupo();
 
@@ -57,7 +56,7 @@ public class Cliente extends Persona {
 
     @Override
     public String toString() {
-        return super.toString() + ", status=" + status + ", suscripcion=" + suscripcion + ", grupo1=" + grupo1 + ", grupo2=" + grupo2 + ", grupo3=" + grupo3;
+        return super.toString() + ", suscripcion=" + suscripcion + ", grupo1=" + grupo1 + ", grupo2=" + grupo2 + ", grupo3=" + grupo3;
     }
 
 }

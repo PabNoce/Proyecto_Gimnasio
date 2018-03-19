@@ -11,7 +11,6 @@ package com.administracion;
  */
 public class Monitor extends Persona {
 
-    private String status = "Monitor";
     private Grupo grupo = new Grupo();
     private float sueldo = 850;
 
@@ -41,7 +40,7 @@ public class Monitor extends Persona {
 
     @Override
     public String toString() {
-        return super.toString() + ", status=" + status + ", grupo=" + grupo + ", sueldo=" + sueldo;
+        return super.toString() + ", grupo=" + grupo + ", sueldo=" + sueldo;
     }
 
 }
