@@ -7,6 +7,7 @@ package com.metodos;
 
 import com.administracion.Area;
 import java.util.HashMap;
+import java.util.Iterator;
 
 /**
  *
@@ -33,5 +34,14 @@ public class Areas {
                 creado = true;
             }
         } while (creado == false);
+    }
+
+    public static void mostrarAreas() {
+
+        Iterator itr = areas.keySet().iterator();
+        while (itr.hasNext()) {
+            int key = (int) itr.next();
+            System.out.println(areas.get(key).toString());
+        }
     }
 }

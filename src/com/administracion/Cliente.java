@@ -56,7 +56,7 @@ public class Cliente extends Persona {
 
     @Override
     public String toString() {
-        return super.toString() + ", suscripcion=" + suscripcion + ", grupo1=" + grupo1 + ", grupo2=" + grupo2 + ", grupo3=" + grupo3;
+        return super.toString() + ", suscripcion =" + suscripcion + ", grupo 1 =" + grupo1 + ", grupo 2 =" + grupo2 + ", grupo 3 =" + grupo3;
     }
 
 }

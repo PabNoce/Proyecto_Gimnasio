@@ -7,6 +7,7 @@ package com.metodos;
 
 import com.administracion.Monitor;
 import java.util.HashMap;
+import java.util.Iterator;
 
 /**
  *
@@ -32,5 +33,13 @@ public class Monitores {
                 creado = true;
             }
         } while (creado == false);
+    }
+    public static void mostrarMonitores() {
+
+        Iterator itr = monitores.keySet().iterator();
+        while (itr.hasNext()) {
+            int key = (int) itr.next();
+            System.out.println(monitores.get(key).toString());
+        }
     }
 }

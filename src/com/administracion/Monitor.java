@@ -40,7 +40,7 @@ public class Monitor extends Persona {
 
     @Override
     public String toString() {
-        return super.toString() + ", grupo=" + grupo + ", sueldo=" + sueldo;
+        return super.toString() + ", grupo =" + grupo + ", sueldo =" + sueldo;
     }
 
 }

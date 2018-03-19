@@ -7,6 +7,7 @@ package com.metodos;
 
 import com.administracion.Cliente;
 import java.util.HashMap;
+import java.util.Iterator;
 
 /**
  *
@@ -32,5 +33,13 @@ public class Clientes {
                 creado = true;
             }
         } while (creado == false);
+    }
+    public static void mostrarClientes() {
+
+        Iterator itr = clientes.keySet().iterator();
+        while (itr.hasNext()) {
+            int key = (int) itr.next();
+            System.out.println(clientes.get(key).toString());
+        }
     }
 }

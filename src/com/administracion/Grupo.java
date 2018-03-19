@@ -69,7 +69,7 @@ public class Grupo {
 
     @Override
     public String toString() {
-        return "idGrupo=" + idGrupo + ", nomeGrupo=" + nomeGrupo + ", area=" + area.getIdArea() + ", monitor=" + monitor.getID();
+        return "ID=" + idGrupo + ", nombre =" + nomeGrupo + ", area=" + area.getIdArea() + ", monitor=" + monitor.getID();
     }
     
 

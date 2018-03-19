@@ -7,6 +7,7 @@ package com.metodos;
 
 import com.administracion.Grupo;
 import java.util.HashMap;
+import java.util.Iterator;
 
 /**
  *
@@ -33,5 +34,13 @@ public class Grupos {
                 creado = true;
             }
         } while (creado == false);
+    }
+     public static void mostrarGrupos() {
+
+        Iterator itr = grupos.keySet().iterator();
+        while (itr.hasNext()) {
+            int key = (int) itr.next();
+            System.out.println(grupos.get(key).toString());
+        }
     }
 }
