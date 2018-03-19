@@ -25,7 +25,7 @@ public class Monitores {
     }
 
     public static void eliminar(int ID) {
-        if (monitores.get(ID) != null) {
+        if (monitores.containsKey(ID)) {
             for (int key : grupos.keySet()) {
                 if (grupos.get(key).getMonitor().getID() == ID) {
                     grupos.get(key).setMonitor(new Monitor());
@@ -42,8 +42,8 @@ public class Monitores {
         int newID = 1;
         boolean creado = false;
         do {
-            if (monitores.get(newID) != null) {
-                newID = newID++;
+            if (monitores.containsKey(newID)) {
+                newID++;
             } else {
                 monitor = new Monitor(newID, nome);
                 monitores.put(newID, monitor);
@@ -54,7 +54,7 @@ public class Monitores {
 
     public void consulta(int ID) {
         try {
-            if (monitores.get(ID) != null) {
+            if (monitores.containsKey(ID)) {
                 JOptionPane.showMessageDialog(null, monitores.get(ID).toString());
             } else {
                 JOptionPane.showMessageDialog(null, "La ID no es correcta.");

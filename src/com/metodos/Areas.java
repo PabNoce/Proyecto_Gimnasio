@@ -17,7 +17,7 @@ import javax.swing.JOptionPane;
  */
 public class Areas {
 
-    static HashMap<Integer,Area> areas = new HashMap();
+    static HashMap<Integer, Area> areas = new HashMap();
 
     static Area area;
 
@@ -26,9 +26,9 @@ public class Areas {
     }
 
     public static void eliminar(int idArea) {
-        if (areas.get(idArea) != null) {
+        if (areas.containsKey(idArea)) {
             for (int key : grupos.keySet()) {
-                if(grupos.get(key).getArea().getIdArea()==idArea){
+                if (grupos.get(key).getArea().getIdArea() == idArea) {
                     grupos.get(key).setArea(new Area());
                 }
             }
@@ -43,9 +43,11 @@ public class Areas {
         int newID = 1;
         boolean creado = false;
         do {
-            if (areas.get(newID) != null) {
-                newID = newID++;
+            if (areas.containsKey(newID)) {
+                newID++;
+
             } else {
+
                 area = new Area(newID, nombreArea);
                 areas.put(newID, area);
                 creado = true;

@@ -15,19 +15,29 @@ import javax.swing.JOptionPane;
  * @author pnocedalopez
  */
 public class Clientes {
-   static HashMap<Integer,Cliente> clientes = new HashMap();
+
+    static HashMap<Integer, Cliente> clientes = new HashMap();
     static Cliente cliente;
 
-    public static void añadirCliente(int ID, Cliente cliente) {
+    public static void añadir(int ID, Cliente cliente) {
         clientes.put(ID, cliente);
     }
 
-    public static void crearCliente(String nome) {
+    public static void eliminar(int ID) {
+        if (clientes.containsKey(ID)) {
+            clientes.remove(ID);
+            JOptionPane.showMessageDialog(null, "Cliente " + ID + " eliminado.");
+        } else {
+            JOptionPane.showMessageDialog(null, "La ID no es correcta.");
+        }
+    }
+
+    public static void crear(String nome) {
         int newID = 1;
         boolean creado = false;
         do {
-            if (clientes.get(newID) != null) {
-                newID = newID++;
+            if (clientes.containsKey(newID)) {
+                newID++;
             } else {
                 cliente = new Cliente(newID, nome);
                 clientes.put(newID, cliente);
@@ -35,9 +45,10 @@ public class Clientes {
             }
         } while (creado == false);
     }
+
     public void consulta(int ID) {
         try {
-            if (clientes.get(ID) != null) {
+            if (clientes.containsKey(ID)) {
                 JOptionPane.showMessageDialog(null, clientes.get(ID).toString());
             } else {
                 JOptionPane.showMessageDialog(null, "La ID no es correcta.");
@@ -46,10 +57,10 @@ public class Clientes {
             JOptionPane.showMessageDialog(null, "La lista no ha sido creada");
         }
     }
-    public static void mostrarClientes() {
 
-       for (int key : clientes.keySet()) {
-           System.out.println(clientes.get(key).toString());
-       }
+    public static void mostrarLista() {
+        for (int key : clientes.keySet()) {
+            System.out.println(clientes.get(key).toString());
+        }
     }
 }

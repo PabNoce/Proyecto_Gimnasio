@@ -13,19 +13,16 @@ public class Grupo {
 
     private int idGrupo = 0;
     private String nomeGrupo = "inexistente";
-    private Area area=new Area();
-    private Monitor monitor=new Monitor();
-    private Cliente[] listaClientes=new Cliente[10];
+    private Area area = new Area();
+    private Monitor monitor = new Monitor();
 
-  public Grupo() {
-        for(int i=0;i<10;i++){
-              listaClientes[i]=new Cliente();
-        }
+    public Grupo() {
     }
-  public Grupo(int idGrupo, String nomeGrupo){
-      this.idGrupo=idGrupo;
-      this.nomeGrupo=nomeGrupo;
-  }
+
+    public Grupo(int idGrupo, String nomeGrupo) {
+        this.idGrupo = idGrupo;
+        this.nomeGrupo = nomeGrupo;
+    }
 
     public int getIdGrupo() {
         return idGrupo;
@@ -59,22 +56,11 @@ public class Grupo {
         this.monitor = monitor;
     }
 
-    public Cliente[] getListaClientes() {
-        return listaClientes;
-    }
-
-    public void setListaClientes(Cliente[] listaClientes) {
-        this.listaClientes = listaClientes;
-    }
+   
 
     @Override
     public String toString() {
         return "ID=" + idGrupo + ", nombre =" + nomeGrupo + ", area=" + area.getIdArea() + ", monitor=" + monitor.getID();
     }
-    
-
-    
-
-  
 
 }

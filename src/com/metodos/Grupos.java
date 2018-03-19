@@ -27,7 +27,7 @@ public class Grupos {
 
     public static void eliminar(int idGrupo) {
 
-        if (grupos.get(idGrupo) != null) {
+        if (grupos.containsKey(idGrupo)) {
             for (int key : monitores.keySet()) {
                 if (monitores.get(key).getGrupo().getIdGrupo() == idGrupo) {
                     monitores.get(key).setGrupo(new Grupo());
@@ -55,8 +55,8 @@ public class Grupos {
         int newID = 1;
         boolean creado = false;
         do {
-            if (grupos.get(newID) != null) {
-                newID = newID++;
+            if (grupos.containsKey(newID)) {
+                newID++;
             } else {
                 grupo = new Grupo(newID, nombreGrupo);
                 grupos.put(newID, grupo);
@@ -67,8 +67,17 @@ public class Grupos {
 
     public void consulta(int idGrupo) {
         try {
-            if (grupos.get(idGrupo) != null) {
+            if (grupos.containsKey(idGrupo)) {
                 JOptionPane.showMessageDialog(null, grupos.get(idGrupo).toString());
+                System.out.println("Lista de clientes:\n");
+                for (int key : clientes.keySet()) {
+                    if (clientes.get(key).getGrupo1().getIdGrupo() == idGrupo
+                            || clientes.get(key).getGrupo2().getIdGrupo() == idGrupo
+                            || clientes.get(key).getGrupo3().getIdGrupo() == idGrupo) {
+                        System.out.println("ID: " + clientes.get(key).getID()
+                                + "Nombre: " + clientes.get(key).getNome());
+                    }
+                }
             } else {
                 JOptionPane.showMessageDialog(null, "La ID no es correcta.");
             }
