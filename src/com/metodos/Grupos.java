@@ -31,19 +31,19 @@ public class Grupos {
 
         if (grupos.containsKey(idGrupo)) {
             for (int key : monitores.keySet()) {
-                if (monitores.get(key).getGrupo().getIdGrupo() == idGrupo) {
-                    monitores.get(key).setGrupo(new Grupo());
+                if (monitores.get(key).getGrupo() == idGrupo) {
+                    monitores.get(key).setGrupo(0);
                 }
             }
             for (int key : clientes.keySet()) {
-                if (clientes.get(key).getGrupo1().getIdGrupo() == idGrupo) {
-                    clientes.get(key).setGrupo1(new Grupo());
+                if (clientes.get(key).getGrupo1() == idGrupo) {
+                    clientes.get(key).setGrupo1(0);
                 }
-                if (clientes.get(key).getGrupo2().getIdGrupo() == idGrupo) {
-                    clientes.get(key).setGrupo2(new Grupo());
+                if (clientes.get(key).getGrupo2() == idGrupo) {
+                    clientes.get(key).setGrupo2(0);
                 }
-                if (clientes.get(key).getGrupo3().getIdGrupo() == idGrupo) {
-                    clientes.get(key).setGrupo3(new Grupo());
+                if (clientes.get(key).getGrupo3() == idGrupo) {
+                    clientes.get(key).setGrupo3(0);
                 }
             }
             grupos.remove(idGrupo);
@@ -73,11 +73,11 @@ public class Grupos {
                 JOptionPane.showMessageDialog(null, grupos.get(idGrupo).toString());
                 System.out.println("Lista de clientes:\n");
                 for (int key : clientes.keySet()) {
-                    if (clientes.get(key).getGrupo1().getIdGrupo() == idGrupo
-                            || clientes.get(key).getGrupo2().getIdGrupo() == idGrupo
-                            || clientes.get(key).getGrupo3().getIdGrupo() == idGrupo) {
+                    if (clientes.get(key).getGrupo1() == idGrupo
+                            || clientes.get(key).getGrupo2() == idGrupo
+                            || clientes.get(key).getGrupo3() == idGrupo) {
                         System.out.println("ID: " + clientes.get(key).getID()
-                                + "Nombre: " + clientes.get(key).getNome());
+                                + " Nombre: " + clientes.get(key).getNome());
                     }
                 }
             } else {
@@ -95,11 +95,15 @@ public class Grupos {
     }
 
     public static void asignarArea(int idGrupo, int idArea) {
-        if (grupos.containsKey(idGrupo) || areas.containsKey(idArea)) {
-            grupos.get(idGrupo).setArea(areas.get(idArea));
-            JOptionPane.showMessageDialog(null, "Area asignada.");
-        } else {
-            JOptionPane.showMessageDialog(null, "El grupo o el area no existen.");
+        try {
+            if (grupos.containsKey(idGrupo) || areas.containsKey(idArea)) {
+                grupos.get(idGrupo).setArea(areas.get(idArea));
+                JOptionPane.showMessageDialog(null, "Area asignada.");
+            } else {
+                JOptionPane.showMessageDialog(null, "El grupo o el area no existen.");
+            }
+        } catch (NullPointerException e) {
+            JOptionPane.showMessageDialog(null, "Error de entrada");
         }
     }
 }

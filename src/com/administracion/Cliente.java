@@ -11,8 +11,8 @@ package com.administracion;
  */
 public class Cliente extends Persona {
 
-    private float suscripcion = (float) 29.99;
-    private Grupo grupo1 = new Grupo(), grupo2 = new Grupo(), grupo3 = new Grupo();
+    private float suscripcion = (float) 30;
+    private int idGrupo1=0,/* = new Grupo(),*/ idGrupo2=0,/* = new Grupo()*/ idGrupo3=0; /*= new Grupo()*/
 
     public Cliente() {
     }
@@ -30,33 +30,33 @@ public class Cliente extends Persona {
         this.suscripcion = suscripcion;
     }
 
-    public Grupo getGrupo1() {
-        return grupo1;
+    public int getGrupo1() {
+        return idGrupo1;
     }
 
-    public void setGrupo1(Grupo grupo1) {
-        this.grupo1 = grupo1;
+    public void setGrupo1(int idGrupo1) {
+        this.idGrupo1 = idGrupo1;
     }
 
-    public Grupo getGrupo2() {
-        return grupo2;
+    public int getGrupo2() {
+        return idGrupo2;
     }
 
-    public void setGrupo2(Grupo grupo2) {
-        this.grupo2 = grupo2;
+    public void setGrupo2(int idGrupo2) {
+        this.idGrupo2 = idGrupo2;
     }
 
-    public Grupo getGrupo3() {
-        return grupo3;
+    public int getGrupo3() {
+        return idGrupo3;
     }
 
-    public void setGrupo3(Grupo grupo3) {
-        this.grupo3 = grupo3;
+    public void setGrupo3(int idGrupo3) {
+        this.idGrupo3 = idGrupo3;
     }
 
     @Override
     public String toString() {
-        return super.toString() + ", suscripcion =" + suscripcion + ", grupo 1 =" + grupo1 + ", grupo 2 =" + grupo2 + ", grupo 3 =" + grupo3;
+        return super.toString() + ", suscripcion = " + suscripcion + ", grupo 1 = " + idGrupo1 + ", grupo 2 = " + idGrupo2 + ", grupo 3 = " + idGrupo3;
     }
 
 }

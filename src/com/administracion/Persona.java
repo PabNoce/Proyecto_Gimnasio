@@ -41,7 +41,7 @@ public class Persona {
 
     @Override
     public String toString() {
-        return "ID =" + ID + ", nombre =" + nome;
+        return "ID = " + ID + ", nombre = " + nome;
     }
 
 }

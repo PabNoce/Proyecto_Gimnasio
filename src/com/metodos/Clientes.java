@@ -68,21 +68,23 @@ public class Clientes {
 
     public static void asignarGrupo(int ID, int idGrupo) {
         try {
-            if (clientes.containsKey(ID) && grupos.containsKey(idGrupo)) {
+            if (clientes.containsKey(ID) && grupos.containsKey(idGrupo)&&(clientes.get(ID).getGrupo1() != idGrupo
+                            && clientes.get(ID).getGrupo2() != idGrupo
+                            && clientes.get(ID).getGrupo3() != idGrupo)) {
 
-                if (clientes.get(ID).getGrupo1().getIdGrupo() == 0) {
-                    clientes.get(ID).setGrupo1(grupos.get(idGrupo));
-                    clientes.get(ID).setSuscripcion(clientes.get(ID).getSuscripcion() + 5);
+                if (clientes.get(ID).getGrupo1() == 0) {
+                    clientes.get(ID).setGrupo1(idGrupo);
+                    clientes.get(ID).setSuscripcion(clientes.get(ID).getSuscripcion() + (float)5);
                     JOptionPane.showMessageDialog(null, "Grupo asignado.");
                 } else {
-                    if (clientes.get(ID).getGrupo2().getIdGrupo() == 0) {
-                        clientes.get(ID).setGrupo2(grupos.get(idGrupo));
-                        clientes.get(ID).setSuscripcion(clientes.get(ID).getSuscripcion() + 5);
+                    if (clientes.get(ID).getGrupo2() == 0) {
+                        clientes.get(ID).setGrupo2(idGrupo);
+                        clientes.get(ID).setSuscripcion(clientes.get(ID).getSuscripcion() + (float)5);
                         JOptionPane.showMessageDialog(null, "Grupo asignado.");
                     } else {
-                        if (clientes.get(ID).getGrupo3().getIdGrupo() == 0) {
-                            clientes.get(ID).setGrupo3(grupos.get(idGrupo));
-                            clientes.get(ID).setSuscripcion(clientes.get(ID).getSuscripcion() + 5);
+                        if (clientes.get(ID).getGrupo3() == 0) {
+                            clientes.get(ID).setGrupo3(idGrupo);
+                            clientes.get(ID).setSuscripcion(clientes.get(ID).getSuscripcion() + (float)5);
                             JOptionPane.showMessageDialog(null, "Grupo asignado.");
                         } else {
                             JOptionPane.showMessageDialog(null, clientes.get(ID).getNome() + " no puede apuntarse en mas grupos.");
@@ -90,7 +92,7 @@ public class Clientes {
                     }
                 }
             } else {
-                JOptionPane.showMessageDialog(null, "La ID no es correcta.");
+                JOptionPane.showMessageDialog(null, "La ID no es correcta o\n ya pertenece a ese grupo.");
             }
         } catch (NullPointerException e) {
             JOptionPane.showMessageDialog(null, "La lista no ha sido creada");
@@ -101,20 +103,20 @@ public class Clientes {
         try {
             if (clientes.containsKey(ID)) {
 
-                if (clientes.get(ID).getGrupo1().getIdGrupo() == idGrupo) {
-                    clientes.get(ID).setGrupo1(new Grupo());
+                if (clientes.get(ID).getGrupo1() == idGrupo) {
+                    clientes.get(ID).setGrupo1(0);
                     clientes.get(ID).setSuscripcion(clientes.get(ID).getSuscripcion() - 5);
-                    JOptionPane.showMessageDialog(null, "Grupo asignado.");
+                    JOptionPane.showMessageDialog(null, "Grupo desasignado.");
                 } else {
-                    if (clientes.get(ID).getGrupo2().getIdGrupo() == idGrupo) {
-                        clientes.get(ID).setGrupo2(new Grupo());
+                    if (clientes.get(ID).getGrupo2() == idGrupo) {
+                        clientes.get(ID).setGrupo2(0);
                         clientes.get(ID).setSuscripcion(clientes.get(ID).getSuscripcion() - 5);
-                        JOptionPane.showMessageDialog(null, "Grupo asignado.");
+                        JOptionPane.showMessageDialog(null, "Grupo desasignado.");
                     } else {
-                        if (clientes.get(ID).getGrupo3().getIdGrupo() == idGrupo) {
-                            clientes.get(ID).setGrupo3(new Grupo());
+                        if (clientes.get(ID).getGrupo3() == idGrupo) {
+                            clientes.get(ID).setGrupo3(0);
                             clientes.get(ID).setSuscripcion(clientes.get(ID).getSuscripcion() - 5);
-                            JOptionPane.showMessageDialog(null, "Grupo asignado.");
+                            JOptionPane.showMessageDialog(null, "Grupo desasignado.");
                         } else {
                             JOptionPane.showMessageDialog(null, clientes.get(ID).getNome() + " no está apuntado en ese grupo");
                         }

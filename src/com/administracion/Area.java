@@ -40,7 +40,7 @@ public class Area {
 
     @Override
     public String toString() {
-        return "ID =" + idArea + ", nombre =" + nomeArea;
+        return "ID = " + idArea + ", nombre = " + nomeArea;
     }
 
 }

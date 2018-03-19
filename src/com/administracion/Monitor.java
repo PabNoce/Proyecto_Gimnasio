@@ -11,7 +11,7 @@ package com.administracion;
  */
 public class Monitor extends Persona {
 
-    private Grupo grupo = new Grupo();
+    private int idGrupo=0;// = new Grupo();
     private float sueldo = 850;
 
     public Monitor() {
@@ -22,12 +22,12 @@ public class Monitor extends Persona {
 
     }
 
-    public Grupo getGrupo() {
-        return grupo;
+    public int getGrupo() {
+        return idGrupo;
     }
 
-    public void setGrupo(Grupo grupo) {
-        this.grupo = grupo;
+    public void setGrupo(int idGrupo) {
+        this.idGrupo = idGrupo;
     }
 
     public float getSueldo() {
@@ -40,7 +40,7 @@ public class Monitor extends Persona {
 
     @Override
     public String toString() {
-        return super.toString() + ", grupo =" + grupo + ", sueldo =" + sueldo;
+        return super.toString() + ", grupo = " + idGrupo + ", sueldo = " + sueldo;
     }
 
 }

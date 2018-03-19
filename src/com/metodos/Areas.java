@@ -59,7 +59,7 @@ public class Areas {
         try {
             if (areas.get(idArea) != null) {
                 JOptionPane.showMessageDialog(null, areas.get(idArea).toString());
-                System.out.println("Lista de grupos usando el area" + idArea + ":\n");
+                System.out.println("Lista de grupos usando el area " + idArea + ":\n");
                 for (int key : grupos.keySet()) {
                     if (grupos.get(key).getArea().getIdArea() == idArea) {
                         System.out.println("ID: " + grupos.get(key).getIdGrupo()

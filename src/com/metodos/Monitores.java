@@ -75,8 +75,9 @@ public class Monitores {
     public static void asignarGrupo(int ID, int idGrupo) {
         try {
             if (monitores.containsKey(ID)) {
-                monitores.get(ID).setGrupo(grupos.get(idGrupo));
+                monitores.get(ID).setGrupo(idGrupo);
                 monitores.get(ID).setSueldo(monitores.get(ID).getSueldo() + 250);
+                grupos.get(idGrupo).setMonitor(monitores.get(ID));
                 JOptionPane.showMessageDialog(null, "Grupo asignado.");
             } else {
                 JOptionPane.showMessageDialog(null, "La ID del grupo no es correcta.");
@@ -87,13 +88,14 @@ public class Monitores {
     }
 
     public static void desasignarGrupo(int ID) {
+       
         try {
-            if (monitores.containsKey(ID)) {
-                monitores.get(ID).setGrupo(new Grupo());
+            if (monitores.containsKey(ID)&&monitores.get(ID).getGrupo()!=0) {
+                monitores.get(ID).setGrupo(0);
                 monitores.get(ID).setSueldo(monitores.get(ID).getSueldo() - 250);
                 JOptionPane.showMessageDialog(null, "Grupo desasignado.");
             } else {
-                JOptionPane.showMessageDialog(null, "La ID del monitor no es correcta.");
+                JOptionPane.showMessageDialog(null, "La ID del monitor no es correcta \no no tiene ningun grupo asignado.");
             }
         } catch (NullPointerException e) {
             JOptionPane.showMessageDialog(null, "La lista no ha sido creada");

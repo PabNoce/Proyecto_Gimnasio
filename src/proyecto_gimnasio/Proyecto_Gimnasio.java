@@ -5,6 +5,7 @@
  */
 package proyecto_gimnasio;
 
+import com.menus.MenuPrincipal;
 import com.metodos.Areas;
 import javax.swing.JOptionPane;
 
@@ -20,7 +21,7 @@ public class Proyecto_Gimnasio {
     public static void main(String[] args) {
      
        //Leer ficheros
-       
+       MenuPrincipal.menuPrincipal();
        //Escribir ficheros
         
     }

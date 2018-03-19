@@ -17,7 +17,7 @@ import javax.swing.JOptionPane;
  */
 public class MenuPrincipal {
 
-    public void menuPrincipal() {
+    public static void menuPrincipal() {
         boolean repeat = true;
         int option, ID, idGrupo, idArea;
         String nome;
@@ -106,12 +106,11 @@ public class MenuPrincipal {
                             case 5:
                                 ID = Integer.parseInt(JOptionPane.showInputDialog("Introduce la ID del monitor: "));
                                 idGrupo = Integer.parseInt(JOptionPane.showInputDialog("Introduce la ID del grupo al que deseas asignarlo: "));
-                                Clientes.asignarGrupo(ID, idGrupo);
+                                Monitores.asignarGrupo(ID, idGrupo);
                                 break;
                             case 6:
-                                ID = Integer.parseInt(JOptionPane.showInputDialog("Introduce la ID del monitor: "));
-                                idGrupo = Integer.parseInt(JOptionPane.showInputDialog("Introduce la ID del grupo del que deseas borrarlo: "));
-                                Clientes.desasignarGrupo(ID, idGrupo);
+                                ID = Integer.parseInt(JOptionPane.showInputDialog("Introduce la ID del monitor: "));                              
+                                Monitores.desasignarGrupo(ID);
                                 break;
                             case 0:
                                 repeat = false;

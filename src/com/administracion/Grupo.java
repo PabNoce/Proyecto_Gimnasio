@@ -22,6 +22,7 @@ public class Grupo {
     public Grupo(int idGrupo, String nomeGrupo) {
         this.idGrupo = idGrupo;
         this.nomeGrupo = nomeGrupo;
+        
     }
 
     public int getIdGrupo() {
@@ -58,7 +59,7 @@ public class Grupo {
 
     @Override
     public String toString() {
-        return "ID=" + idGrupo + ", nombre =" + nomeGrupo + ", area=" + area.getIdArea() + ", monitor=" + monitor.getID();
+        return "ID = " + idGrupo + ", nombre = " + nomeGrupo + ", area = " + area.getIdArea() + ", monitor = " + monitor.getID();
     }
 
 }
