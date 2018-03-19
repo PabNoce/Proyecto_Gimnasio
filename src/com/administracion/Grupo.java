@@ -56,8 +56,6 @@ public class Grupo {
         this.monitor = monitor;
     }
 
-   
-
     @Override
     public String toString() {
         return "ID=" + idGrupo + ", nombre =" + nomeGrupo + ", area=" + area.getIdArea() + ", monitor=" + monitor.getID();

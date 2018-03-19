@@ -5,7 +5,9 @@
  */
 package com.metodos;
 
+import com.administracion.Area;
 import com.administracion.Grupo;
+import static com.metodos.Areas.areas;
 import static com.metodos.Clientes.clientes;
 import static com.metodos.Monitores.monitores;
 import java.util.HashMap;
@@ -65,7 +67,7 @@ public class Grupos {
         } while (creado == false);
     }
 
-    public void consulta(int idGrupo) {
+    public static void consulta(int idGrupo) {
         try {
             if (grupos.containsKey(idGrupo)) {
                 JOptionPane.showMessageDialog(null, grupos.get(idGrupo).toString());
@@ -89,6 +91,15 @@ public class Grupos {
     public static void mostrarLista() {
         for (int key : grupos.keySet()) {
             System.out.println(grupos.get(key).toString());
+        }
+    }
+
+    public static void asignarArea(int idGrupo, int idArea) {
+        if (grupos.containsKey(idGrupo) || areas.containsKey(idArea)) {
+            grupos.get(idGrupo).setArea(areas.get(idArea));
+            JOptionPane.showMessageDialog(null, "Area asignada.");
+        } else {
+            JOptionPane.showMessageDialog(null, "El grupo o el area no existen.");
         }
     }
 }

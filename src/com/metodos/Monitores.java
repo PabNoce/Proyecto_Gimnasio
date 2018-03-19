@@ -5,6 +5,7 @@
  */
 package com.metodos;
 
+import com.administracion.Grupo;
 import com.administracion.Monitor;
 import static com.metodos.Grupos.grupos;
 import java.util.HashMap;
@@ -52,7 +53,7 @@ public class Monitores {
         } while (creado == false);
     }
 
-    public void consulta(int ID) {
+    public static void consulta(int ID) {
         try {
             if (monitores.containsKey(ID)) {
                 JOptionPane.showMessageDialog(null, monitores.get(ID).toString());
@@ -69,5 +70,34 @@ public class Monitores {
         for (int key : monitores.keySet()) {
             System.out.println(monitores.get(key).toString());
         }
+    }
+
+    public static void asignarGrupo(int ID, int idGrupo) {
+        try {
+            if (monitores.containsKey(ID)) {
+                monitores.get(ID).setGrupo(grupos.get(idGrupo));
+                monitores.get(ID).setSueldo(monitores.get(ID).getSueldo() + 250);
+                JOptionPane.showMessageDialog(null, "Grupo asignado.");
+            } else {
+                JOptionPane.showMessageDialog(null, "La ID del grupo no es correcta.");
+            }
+        } catch (NullPointerException e) {
+            JOptionPane.showMessageDialog(null, "La lista no ha sido creada");
+        }
+    }
+
+    public static void desasignarGrupo(int ID) {
+        try {
+            if (monitores.containsKey(ID)) {
+                monitores.get(ID).setGrupo(new Grupo());
+                monitores.get(ID).setSueldo(monitores.get(ID).getSueldo() - 250);
+                JOptionPane.showMessageDialog(null, "Grupo desasignado.");
+            } else {
+                JOptionPane.showMessageDialog(null, "La ID del monitor no es correcta.");
+            }
+        } catch (NullPointerException e) {
+            JOptionPane.showMessageDialog(null, "La lista no ha sido creada");
+        }
+
     }
 }

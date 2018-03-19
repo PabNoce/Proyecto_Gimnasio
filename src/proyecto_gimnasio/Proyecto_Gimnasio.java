@@ -18,11 +18,10 @@ public class Proyecto_Gimnasio {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
-          
-        Areas.crear("Gimnasio");
-        Areas.crear("Gimnasio2");
-       Areas.mostrarLista();
+     
+       //Leer ficheros
+       
+       //Escribir ficheros
         
     }
     

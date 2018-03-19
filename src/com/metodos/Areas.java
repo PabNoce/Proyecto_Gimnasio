@@ -55,10 +55,17 @@ public class Areas {
         } while (creado == false);
     }
 
-    public void consulta(int idArea) {
+    public static void consulta(int idArea) {
         try {
             if (areas.get(idArea) != null) {
                 JOptionPane.showMessageDialog(null, areas.get(idArea).toString());
+                System.out.println("Lista de grupos usando el area" + idArea + ":\n");
+                for (int key : grupos.keySet()) {
+                    if (grupos.get(key).getArea().getIdArea() == idArea) {
+                        System.out.println("ID: " + grupos.get(key).getIdGrupo()
+                                + "Nombre: " + grupos.get(key).getNomeGrupo());
+                    }
+                }
             } else {
                 JOptionPane.showMessageDialog(null, "La ID no es correcta.");
             }

@@ -53,7 +53,7 @@ public class LeerFichero {
     }
 
     public void leerFicheroGrupos() {
-fich = new File("Grupos.txt");
+        fich = new File("Grupos.txt");
         try {
             String linea;
             String[] lista = new String[4];
@@ -63,32 +63,6 @@ fich = new File("Grupos.txt");
                 linea = sc.nextLine();
                 lista = linea.split(",");
                 grupo = new Grupo(Integer.parseInt(lista[0]), lista[1]);
-               
-            }
-        } catch (FileNotFoundException ex) {
-            System.out.println("No se encuentra el archivo");
-        }
-        sc.close();
-    }
-
-    public void leerFicheroPersonas() {
-
-        fich = new File("Personas.txt");
-        try {
-            String linea;
-            String[] lista = new String[7];
-            sc = new Scanner(fich);
-            while (sc.hasNextLine()) {
-                sc.nextLine();
-                linea = sc.nextLine();
-                lista = linea.split(",");
-
-                if (lista[3].equalsIgnoreCase("monitor")) {
-                    monitor = new Monitor(Integer.parseInt(lista[0]), lista[1]);
-                    monitor.setSueldo(Float.parseFloat(lista[4]));
-                    //monitor.setGrupo(lista[3]);
-                    //registroMonitores.put(monitor.getID(),monitor.getNome(),monitor.getGrupo(),monitor.getSueldo());
-                }
 
             }
         } catch (FileNotFoundException ex) {
