@@ -38,7 +38,7 @@ public class MenuPrincipal {
                                 + "3-Mostrar un cliente.\n"
                                 + "4-Mostrar lista de clientes.\n"
                                 + "5-Apuntar cliente a un grupo.\n"
-                                + "6-desapuntar cliente de un grupo.\n"
+                                + "6-Desapuntar cliente de un grupo.\n"
                                 + "0-Atrás."
                         ));
                         switch (option) {
@@ -129,7 +129,7 @@ public class MenuPrincipal {
                                 + "2-Eliminar grupo.\n"
                                 + "3-Consultar lista de alumnos de un grupo.\n"
                                 + "4-Consultar lista de grupos.\n"
-                                + "5-Dsignar un area para un grupo\n"
+                                + "5-Designar un area para un grupo\n"
                                 + "0-Atrás."
                         ));
                         switch (option) {
