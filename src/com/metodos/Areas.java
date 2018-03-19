@@ -6,8 +6,10 @@
 package com.metodos;
 
 import com.administracion.Area;
+import static com.metodos.Grupos.grupos;
 import java.util.HashMap;
 import java.util.Iterator;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -15,14 +17,29 @@ import java.util.Iterator;
  */
 public class Areas {
 
-    static HashMap areas = new HashMap();
+    static HashMap<Integer,Area> areas = new HashMap();
+
     static Area area;
 
-    public static void añadirArea(int ID, Area area) {
-        areas.put(ID, area);
+    public static void añadir(int idArea, Area area) {
+        areas.put(idArea, area);
     }
 
-    public static void crearArea(String nombreArea) {
+    public static void eliminar(int idArea) {
+        if (areas.get(idArea) != null) {
+            for (int key : grupos.keySet()) {
+                if(grupos.get(key).getArea().getIdArea()==idArea){
+                    grupos.get(key).setArea(new Area());
+                }
+            }
+            areas.remove(idArea);
+            JOptionPane.showMessageDialog(null, "Area " + idArea + " eliminada.");
+        } else {
+            JOptionPane.showMessageDialog(null, "La ID no es correcta.");
+        }
+    }
+
+    public static void crear(String nombreArea) {
         int newID = 1;
         boolean creado = false;
         do {
@@ -36,11 +53,20 @@ public class Areas {
         } while (creado == false);
     }
 
-    public static void mostrarAreas() {
+    public void consulta(int idArea) {
+        try {
+            if (areas.get(idArea) != null) {
+                JOptionPane.showMessageDialog(null, areas.get(idArea).toString());
+            } else {
+                JOptionPane.showMessageDialog(null, "La ID no es correcta.");
+            }
+        } catch (NullPointerException e) {
+            JOptionPane.showMessageDialog(null, "La lista no ha sido creada");
+        }
+    }
 
-        Iterator itr = areas.keySet().iterator();
-        while (itr.hasNext()) {
-            int key = (int) itr.next();
+    public static void mostrarLista() {
+        for (int key : areas.keySet()) {
             System.out.println(areas.get(key).toString());
         }
     }

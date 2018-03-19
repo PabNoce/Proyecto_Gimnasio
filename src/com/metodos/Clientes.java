@@ -8,13 +8,14 @@ package com.metodos;
 import com.administracion.Cliente;
 import java.util.HashMap;
 import java.util.Iterator;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author pnocedalopez
  */
 public class Clientes {
-    static HashMap clientes = new HashMap();
+   static HashMap<Integer,Cliente> clientes = new HashMap();
     static Cliente cliente;
 
     public static void añadirCliente(int ID, Cliente cliente) {
@@ -34,12 +35,21 @@ public class Clientes {
             }
         } while (creado == false);
     }
+    public void consulta(int ID) {
+        try {
+            if (clientes.get(ID) != null) {
+                JOptionPane.showMessageDialog(null, clientes.get(ID).toString());
+            } else {
+                JOptionPane.showMessageDialog(null, "La ID no es correcta.");
+            }
+        } catch (NullPointerException e) {
+            JOptionPane.showMessageDialog(null, "La lista no ha sido creada");
+        }
+    }
     public static void mostrarClientes() {
 
-        Iterator itr = clientes.keySet().iterator();
-        while (itr.hasNext()) {
-            int key = (int) itr.next();
-            System.out.println(clientes.get(key).toString());
-        }
+       for (int key : clientes.keySet()) {
+           System.out.println(clientes.get(key).toString());
+       }
     }
 }

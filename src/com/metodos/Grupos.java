@@ -6,8 +6,11 @@
 package com.metodos;
 
 import com.administracion.Grupo;
+import static com.metodos.Clientes.clientes;
+import static com.metodos.Monitores.monitores;
 import java.util.HashMap;
 import java.util.Iterator;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -15,14 +18,40 @@ import java.util.Iterator;
  */
 public class Grupos {
 
-    static HashMap grupos = new HashMap();
+    static HashMap<Integer, Grupo> grupos = new HashMap();
     static Grupo grupo;
 
-    public static void añadirGrupo(int ID, Grupo grupo) {
-        grupos.put(ID, grupo);
+    public static void añadir(int idGrupo, Grupo grupo) {
+        grupos.put(idGrupo, grupo);
     }
 
-    public static void crearGrupo(String nombreGrupo) {
+    public static void eliminar(int idGrupo) {
+
+        if (grupos.get(idGrupo) != null) {
+            for (int key : monitores.keySet()) {
+                if (monitores.get(key).getGrupo().getIdGrupo() == idGrupo) {
+                    monitores.get(key).setGrupo(new Grupo());
+                }
+            }
+            for (int key : clientes.keySet()) {
+                if (clientes.get(key).getGrupo1().getIdGrupo() == idGrupo) {
+                    clientes.get(key).setGrupo1(new Grupo());
+                }
+                if (clientes.get(key).getGrupo2().getIdGrupo() == idGrupo) {
+                    clientes.get(key).setGrupo2(new Grupo());
+                }
+                if (clientes.get(key).getGrupo3().getIdGrupo() == idGrupo) {
+                    clientes.get(key).setGrupo3(new Grupo());
+                }
+            }
+            grupos.remove(idGrupo);
+            JOptionPane.showMessageDialog(null, "Grupo " + idGrupo + " eliminado.");
+        } else {
+            JOptionPane.showMessageDialog(null, "La ID no es correcta.");
+        }
+    }
+
+    public static void crear(String nombreGrupo) {
         int newID = 1;
         boolean creado = false;
         do {
@@ -35,11 +64,21 @@ public class Grupos {
             }
         } while (creado == false);
     }
-     public static void mostrarGrupos() {
 
-        Iterator itr = grupos.keySet().iterator();
-        while (itr.hasNext()) {
-            int key = (int) itr.next();
+    public void consulta(int idGrupo) {
+        try {
+            if (grupos.get(idGrupo) != null) {
+                JOptionPane.showMessageDialog(null, grupos.get(idGrupo).toString());
+            } else {
+                JOptionPane.showMessageDialog(null, "La ID no es correcta.");
+            }
+        } catch (NullPointerException e) {
+            JOptionPane.showMessageDialog(null, "La lista no ha sido creada");
+        }
+    }
+
+    public static void mostrarLista() {
+        for (int key : grupos.keySet()) {
             System.out.println(grupos.get(key).toString());
         }
     }

@@ -44,7 +44,7 @@ public class LeerFichero {
                 linea = sc.nextLine();
                 lista = linea.split(",");
                 area = new Area(Integer.parseInt(lista[0]), lista[1]);
-                Areas.añadirArea(Integer.parseInt(lista[0]), area);
+                Areas.añadir(Integer.parseInt(lista[0]), area);
             }
         } catch (FileNotFoundException ex) {
             System.out.println("No se encuentra el archivo");

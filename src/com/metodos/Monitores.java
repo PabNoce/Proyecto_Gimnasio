@@ -6,22 +6,39 @@
 package com.metodos;
 
 import com.administracion.Monitor;
+import static com.metodos.Grupos.grupos;
 import java.util.HashMap;
 import java.util.Iterator;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author pnocedalopez
  */
 public class Monitores {
-    static HashMap monitores = new HashMap();
+
+    static HashMap<Integer, Monitor> monitores = new HashMap();
     static Monitor monitor;
 
-    public static void añadirMonitor(int ID, Monitor monitor) {
+    public static void añadir(int ID, Monitor monitor) {
         monitores.put(ID, monitor);
     }
 
-    public static void crearMonitor(String nome) {
+    public static void eliminar(int ID) {
+        if (monitores.get(ID) != null) {
+            for (int key : grupos.keySet()) {
+                if (grupos.get(key).getMonitor().getID() == ID) {
+                    grupos.get(key).setMonitor(new Monitor());
+                }
+            }
+            monitores.remove(ID);
+            JOptionPane.showMessageDialog(null, "Monitor " + ID + " eliminado.");
+        } else {
+            JOptionPane.showMessageDialog(null, "La ID no es correcta.");
+        }
+    }
+
+    public static void crear(String nome) {
         int newID = 1;
         boolean creado = false;
         do {
@@ -34,11 +51,22 @@ public class Monitores {
             }
         } while (creado == false);
     }
-    public static void mostrarMonitores() {
 
-        Iterator itr = monitores.keySet().iterator();
-        while (itr.hasNext()) {
-            int key = (int) itr.next();
+    public void consulta(int ID) {
+        try {
+            if (monitores.get(ID) != null) {
+                JOptionPane.showMessageDialog(null, monitores.get(ID).toString());
+            } else {
+                JOptionPane.showMessageDialog(null, "La ID no es correcta.");
+            }
+        } catch (NullPointerException e) {
+            JOptionPane.showMessageDialog(null, "La lista no ha sido creada");
+        }
+    }
+
+    public static void mostrarLista() {
+
+        for (int key : monitores.keySet()) {
             System.out.println(monitores.get(key).toString());
         }
     }

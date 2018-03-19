@@ -5,6 +5,9 @@
  */
 package proyecto_gimnasio;
 
+import com.metodos.Areas;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author pnocedalopez
@@ -16,6 +19,13 @@ public class Proyecto_Gimnasio {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+          JOptionPane.showMessageDialog(null, "Holaaa");
+        Areas.crear("Gimnasio");
+        Areas.crear("Gimnasio2");
+        JOptionPane.showMessageDialog(null, "Holaaa");
+        System.out.println("Holaaa");
+        Areas.mostrarLista();
+        System.out.println("adios");
     }
     
 }
