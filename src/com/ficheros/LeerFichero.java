@@ -10,6 +10,8 @@ import com.administracion.Cliente;
 import com.administracion.Grupo;
 import com.administracion.Monitor;
 import com.metodos.Areas;
+import com.metodos.Clientes;
+import com.metodos.Grupos;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
@@ -22,53 +24,96 @@ import java.util.Scanner;
  */
 public class LeerFichero {
 
-    File fich;
-    Scanner sc;
-    HashMap registroClientes = new HashMap();
-    HashMap registroMonitores = new HashMap();
-    HashMap registroGrupos = new HashMap();
-    HashMap registroAreas = new HashMap();
-    Monitor monitor;
-    Cliente cliente;
-    Grupo grupo;
-    Area area;
+    static Monitor monitor;
+    static Cliente cliente;
+    static Grupo grupo;
+    static Area area;
 
-    public void leerFicheroAreas() {
-        fich = new File("Areas.txt");
+    public static void leerFicheroAreas() {
+        File fich = new File("Areas.txt");
         try {
             String linea;
             String[] lista = new String[2];
-            sc = new Scanner(fich);
+            Scanner sc = new Scanner(fich);
             while (sc.hasNextLine()) {
-                sc.nextLine();
+
                 linea = sc.nextLine();
                 lista = linea.split(",");
                 area = new Area(Integer.parseInt(lista[0]), lista[1]);
                 Areas.añadir(Integer.parseInt(lista[0]), area);
             }
+            sc.close();
         } catch (FileNotFoundException ex) {
             System.out.println("No se encuentra el archivo");
         }
-        sc.close();
+
     }
 
-    public void leerFicheroGrupos() {
-        fich = new File("Grupos.txt");
+    public static void leerFicheroGrupos() {
+        File fich = new File("Grupos.txt");
         try {
             String linea;
             String[] lista = new String[4];
-            sc = new Scanner(fich);
+            Scanner sc = new Scanner(fich);
             while (sc.hasNextLine()) {
-                sc.nextLine();
+
                 linea = sc.nextLine();
                 lista = linea.split(",");
                 grupo = new Grupo(Integer.parseInt(lista[0]), lista[1]);
+                grupo.setArea(Integer.parseInt(lista[2]));
+                grupo.setMonitor(Integer.parseInt(lista[3]));
+                Grupos.añadir(Integer.parseInt(lista[0]), grupo);
 
             }
+            sc.close();
         } catch (FileNotFoundException ex) {
             System.out.println("No se encuentra el archivo");
         }
-        sc.close();
+
     }
 
+    public static void leerFicheroMonitores() {
+        File fich = new File("Monitores.txt");
+        try {
+            String linea;
+            String[] lista = new String[4];
+            Scanner sc = new Scanner(fich);
+            while (sc.hasNextLine()) {
+
+                linea = sc.nextLine();
+                lista = linea.split(",");
+                monitor = new Monitor(Integer.parseInt(lista[0]), lista[1]);
+                monitor.setGrupo(Integer.parseInt(lista[2]));
+                monitor.setSueldo(Float.parseFloat(lista[3]));
+            }
+            sc.close();
+        } catch (FileNotFoundException ex) {
+            System.out.println("No se encuentra el archivo");
+        }
+
+    }
+
+    public static void leerFicheroClientes() {
+        File fich = new File("Clientes.txt");
+        try {
+            String linea;
+            String[] lista = new String[6];
+            Scanner sc = new Scanner(fich);
+            while (sc.hasNextLine()) {
+
+                linea = sc.nextLine();
+                lista = linea.split(",");
+                cliente = new Cliente(Integer.parseInt(lista[0]), lista[1]);
+                cliente.setSuscripcion(Float.parseFloat(lista[2]));
+                cliente.setGrupo1(Integer.parseInt(lista[3]));
+                cliente.setGrupo2(Integer.parseInt(lista[4]));
+                cliente.setGrupo3(Integer.parseInt(lista[5]));
+                Clientes.añadir(Integer.parseInt(lista[0]), cliente);
+            }
+            sc.close();
+        } catch (FileNotFoundException ex) {
+            System.out.println("No se encuentra el archivo");
+        }
+
+    }
 }

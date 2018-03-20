@@ -11,7 +11,7 @@ package com.administracion;
  */
 public class Monitor extends Persona {
 
-    private int idGrupo=0;// = new Grupo();
+    private int idGrupo=0;
     private float sueldo = 850;
 
     public Monitor() {

@@ -6,6 +6,7 @@
 package com.metodos;
 
 import com.administracion.Area;
+import com.ficheros.EscribirFichero;
 import static com.metodos.Grupos.grupos;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -28,8 +29,8 @@ public class Areas {
     public static void eliminar(int idArea) {
         if (areas.containsKey(idArea)) {
             for (int key : grupos.keySet()) {
-                if (grupos.get(key).getArea().getIdArea() == idArea) {
-                    grupos.get(key).setArea(new Area());
+                if (grupos.get(key).getArea() == idArea) {
+                    grupos.get(key).setArea(0);
                 }
             }
             areas.remove(idArea);
@@ -61,7 +62,7 @@ public class Areas {
                 JOptionPane.showMessageDialog(null, areas.get(idArea).toString());
                 System.out.println("Lista de grupos usando el area " + idArea + ":\n");
                 for (int key : grupos.keySet()) {
-                    if (grupos.get(key).getArea().getIdArea() == idArea) {
+                    if (grupos.get(key).getArea() == idArea) {
                         System.out.println("ID: " + grupos.get(key).getIdGrupo()
                                 + "Nombre: " + grupos.get(key).getNomeGrupo());
                     }
@@ -78,5 +79,8 @@ public class Areas {
         for (int key : areas.keySet()) {
             System.out.println(areas.get(key).toString());
         }
+    }
+    public static void escribir() {
+          EscribirFichero.escribirFicheroAreas(areas);
     }
 }

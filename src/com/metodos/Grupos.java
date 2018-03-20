@@ -7,6 +7,7 @@ package com.metodos;
 
 import com.administracion.Area;
 import com.administracion.Grupo;
+import com.ficheros.EscribirFichero;
 import static com.metodos.Areas.areas;
 import static com.metodos.Clientes.clientes;
 import static com.metodos.Monitores.monitores;
@@ -97,7 +98,7 @@ public class Grupos {
     public static void asignarArea(int idGrupo, int idArea) {
         try {
             if (grupos.containsKey(idGrupo) || areas.containsKey(idArea)) {
-                grupos.get(idGrupo).setArea(areas.get(idArea));
+                grupos.get(idGrupo).setArea(areas.get(idArea).getIdArea());
                 JOptionPane.showMessageDialog(null, "Area asignada.");
             } else {
                 JOptionPane.showMessageDialog(null, "El grupo o el area no existen.");
@@ -105,5 +106,8 @@ public class Grupos {
         } catch (NullPointerException e) {
             JOptionPane.showMessageDialog(null, "Error de entrada");
         }
+    }
+    public static void escribir() {
+          EscribirFichero.escribirFicheroGrupos(grupos);
     }
 }

@@ -13,8 +13,8 @@ public class Grupo {
 
     private int idGrupo = 0;
     private String nomeGrupo = "inexistente";
-    private Area area = new Area();
-    private Monitor monitor = new Monitor();
+    private int area = 0;
+    private int monitor = 0;
 
     public Grupo() {
     }
@@ -41,25 +41,25 @@ public class Grupo {
         this.nomeGrupo = nomeGrupo;
     }
 
-    public Area getArea() {
+    public int getArea() {
         return area;
     }
 
-    public void setArea(Area area) {
+    public void setArea(int area) {
         this.area = area;
     }
 
-    public Monitor getMonitor() {
+    public int getMonitor() {
         return monitor;
     }
 
-    public void setMonitor(Monitor monitor) {
+    public void setMonitor(int monitor) {
         this.monitor = monitor;
     }
 
     @Override
     public String toString() {
-        return "ID = " + idGrupo + ", nombre = " + nomeGrupo + ", area = " + area.getIdArea() + ", monitor = " + monitor.getID();
+        return "ID = " + idGrupo + ", nombre = " + nomeGrupo + ", area = " + area + ", monitor = " + monitor;
     }
 
 }

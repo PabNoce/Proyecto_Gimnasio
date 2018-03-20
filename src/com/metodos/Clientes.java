@@ -7,6 +7,7 @@ package com.metodos;
 
 import com.administracion.Cliente;
 import com.administracion.Grupo;
+import com.ficheros.EscribirFichero;
 import static com.metodos.Grupos.grupos;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -128,5 +129,8 @@ public class Clientes {
         } catch (NullPointerException e) {
             JOptionPane.showMessageDialog(null, "La lista no ha sido creada");
         }
+    }
+    public static void escribir() {
+          EscribirFichero.escribirFicheroClientes(clientes);
     }
 }

@@ -7,6 +7,7 @@ package com.metodos;
 
 import com.administracion.Grupo;
 import com.administracion.Monitor;
+import com.ficheros.EscribirFichero;
 import static com.metodos.Grupos.grupos;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -28,8 +29,8 @@ public class Monitores {
     public static void eliminar(int ID) {
         if (monitores.containsKey(ID)) {
             for (int key : grupos.keySet()) {
-                if (grupos.get(key).getMonitor().getID() == ID) {
-                    grupos.get(key).setMonitor(new Monitor());
+                if (grupos.get(key).getMonitor() == ID) {
+                    grupos.get(key).setMonitor(0);
                 }
             }
             monitores.remove(ID);
@@ -77,7 +78,7 @@ public class Monitores {
             if (monitores.containsKey(ID)) {
                 monitores.get(ID).setGrupo(idGrupo);
                 monitores.get(ID).setSueldo(monitores.get(ID).getSueldo() + 250);
-                grupos.get(idGrupo).setMonitor(monitores.get(ID));
+                grupos.get(idGrupo).setMonitor(monitores.get(ID).getID());
                 JOptionPane.showMessageDialog(null, "Grupo asignado.");
             } else {
                 JOptionPane.showMessageDialog(null, "La ID del grupo no es correcta.");
@@ -101,5 +102,8 @@ public class Monitores {
             JOptionPane.showMessageDialog(null, "La lista no ha sido creada");
         }
 
+    }
+    public static void escribir() {
+          EscribirFichero.escribirFicheroMonitores(monitores);
     }
 }
