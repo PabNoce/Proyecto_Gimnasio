@@ -53,7 +53,7 @@ public class Conexion {
         connect();
         ResultSet select = null;
         try {
-            PreparedStatement statement = connect.prepareStatement("SELECT * FROM Area");
+            PreparedStatement statement = connect.prepareStatement("SELECT * FROM area");
             select = statement.executeQuery();
             while (select.next()) {
                 Area area = new Area(select.getInt("idArea"), select.getString("nomeArea"));
@@ -70,7 +70,7 @@ public class Conexion {
         connect();
         ResultSet select = null;
         try {
-            PreparedStatement statement = connect.prepareStatement("SELECT * FROM Grupo");
+            PreparedStatement statement = connect.prepareStatement("SELECT * FROM grupo");
             select = statement.executeQuery();
             while (select.next()) {
                 Grupo grupo = new Grupo(select.getInt("idGrupo"), select.getString("nomeGrupo"));
@@ -170,7 +170,7 @@ public class Conexion {
     public static void guardarClientes(Cliente cliente) {
         connect();
         try {
-            PreparedStatement statement = connect.prepareStatement("insert into cliente (ID, nome, suscripcion, grupo1, grupo2, grupo3) values (?,?,?,?,?,?)");
+            PreparedStatement statement = connect.prepareStatement("insert into cliente (ID, nome, suscripcion, idGrupo1, idGrupo2, idGrupo3) values (?,?,?,?,?,?)");
             statement.setString(1, String.valueOf(cliente.getID()));
             statement.setString(2, cliente.getNome());
             statement.setString(3, String.valueOf(cliente.getSuscripcion()));
