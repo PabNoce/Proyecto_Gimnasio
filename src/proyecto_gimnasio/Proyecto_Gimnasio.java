@@ -8,6 +8,7 @@ package proyecto_gimnasio;
 import com.ficheros.Conexion;
 import com.ficheros.EscribirFichero;
 import com.ficheros.LeerFichero;
+import com.menus.Menu;
 import com.menus.MenuPrincipal;
 import com.metodos.Areas;
 import com.metodos.Clientes;
@@ -32,16 +33,16 @@ public class Proyecto_Gimnasio {
         //LeerFichero.leerFicheroMonitores();
         //LeerFichero.leerFicheroClientes();
         //leer ficheros
-        
         //Cargar base de datos
         Conexion.cargarAreas();
         Conexion.cargarGrupos();
         Conexion.cargarMonitores();
         Conexion.cargarClientes();
         //Cargar base de datos
-        
-        MenuPrincipal.menuPrincipal();
-        
+
+        Menu m = new Menu();
+        //MenuPrincipal.menuPrincipal();
+
         //Guardar base de datos
         Conexion.dropTables();
         Areas.escribir();
