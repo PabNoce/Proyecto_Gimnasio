@@ -86,4 +86,13 @@ public class Areas {
           Conexion.guardarAreas(areas.get(key));
           }
     }
+
+    public static HashMap<Integer, Area> getAreas() {
+        return areas;
+    }
+
+    public static void setAreas(HashMap<Integer, Area> areas) {
+        Areas.areas = areas;
+    }
+    
 }

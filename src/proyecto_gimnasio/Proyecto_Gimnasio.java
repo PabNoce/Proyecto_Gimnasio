@@ -50,7 +50,6 @@ public class Proyecto_Gimnasio {
         Monitores.escribir();
         Clientes.escribir();
         //Guardar base de datos
-
     }
 
 }
