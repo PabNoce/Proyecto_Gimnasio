@@ -137,4 +137,13 @@ public class Clientes {
           Conexion.guardarClientes(clientes.get(key));
           }
     }
+
+    public static HashMap<Integer, Cliente> getClientes() {
+        return clientes;
+    }
+
+    public static void setClientes(HashMap<Integer, Cliente> clientes) {
+        Clientes.clientes = clientes;
+    }
+    
 }
