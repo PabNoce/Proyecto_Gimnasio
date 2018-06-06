@@ -6,6 +6,7 @@
 package com.metodos;
 
 import com.administracion.Area;
+import com.ficheros.Conexion;
 import com.ficheros.EscribirFichero;
 import static com.metodos.Grupos.grupos;
 import java.util.HashMap;
@@ -81,6 +82,8 @@ public class Areas {
         }
     }
     public static void escribir() {
-          EscribirFichero.escribirFicheroAreas(areas);
+          for (int key : areas.keySet()) {
+          Conexion.guardarAreas(areas.get(key));
+          }
     }
 }

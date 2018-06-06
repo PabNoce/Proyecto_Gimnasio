@@ -7,7 +7,9 @@ package com.metodos;
 
 import com.administracion.Cliente;
 import com.administracion.Grupo;
+import com.ficheros.Conexion;
 import com.ficheros.EscribirFichero;
+import static com.metodos.Areas.areas;
 import static com.metodos.Grupos.grupos;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -131,6 +133,8 @@ public class Clientes {
         }
     }
     public static void escribir() {
-          EscribirFichero.escribirFicheroClientes(clientes);
+          for (int key : clientes.keySet()) {
+          Conexion.guardarClientes(clientes.get(key));
+          }
     }
 }

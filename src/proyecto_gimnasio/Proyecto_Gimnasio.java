@@ -5,6 +5,7 @@
  */
 package proyecto_gimnasio;
 
+import com.ficheros.Conexion;
 import com.ficheros.EscribirFichero;
 import com.ficheros.LeerFichero;
 import com.menus.MenuPrincipal;
@@ -26,18 +27,28 @@ public class Proyecto_Gimnasio {
     public static void main(String[] args) {
 
         //Leer ficheros
-        LeerFichero.leerFicheroAreas();
-        LeerFichero.leerFicheroGrupos();
-        LeerFichero.leerFicheroMonitores();
-        LeerFichero.leerFicheroClientes();
+        //LeerFichero.leerFicheroAreas();
+        //LeerFichero.leerFicheroGrupos();
+        //LeerFichero.leerFicheroMonitores();
+        //LeerFichero.leerFicheroClientes();
         //leer ficheros
+        
+        //Cargar base de datos
+        Conexion.cargarAreas();
+        Conexion.cargarGrupos();
+        Conexion.cargarMonitores();
+        Conexion.cargarClientes();
+        //Cargar base de datos
+        
         MenuPrincipal.menuPrincipal();
-        //Escribir ficheros
+        
+        //Guardar base de datos
+        Conexion.dropTables();
         Areas.escribir();
         Grupos.escribir();
         Monitores.escribir();
         Clientes.escribir();
-        //Escribir Ficheros
+        //Guardar base de datos
 
     }
 

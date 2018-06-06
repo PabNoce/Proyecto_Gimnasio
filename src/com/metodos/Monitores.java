@@ -7,7 +7,9 @@ package com.metodos;
 
 import com.administracion.Grupo;
 import com.administracion.Monitor;
+import com.ficheros.Conexion;
 import com.ficheros.EscribirFichero;
+import static com.metodos.Areas.areas;
 import static com.metodos.Grupos.grupos;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -104,6 +106,8 @@ public class Monitores {
 
     }
     public static void escribir() {
-          EscribirFichero.escribirFicheroMonitores(monitores);
+         for (int key : monitores.keySet()) {
+          Conexion.guardarMonitores(monitores.get(key));
+          }
     }
 }

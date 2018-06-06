@@ -7,6 +7,7 @@ package com.metodos;
 
 import com.administracion.Area;
 import com.administracion.Grupo;
+import com.ficheros.Conexion;
 import com.ficheros.EscribirFichero;
 import static com.metodos.Areas.areas;
 import static com.metodos.Clientes.clientes;
@@ -108,6 +109,8 @@ public class Grupos {
         }
     }
     public static void escribir() {
-          EscribirFichero.escribirFicheroGrupos(grupos);
+       for (int key : grupos.keySet()) {
+          Conexion.guardarGrupos(grupos.get(key));
+          }
     }
 }
