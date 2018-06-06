@@ -113,4 +113,13 @@ public class Grupos {
           Conexion.guardarGrupos(grupos.get(key));
           }
     }
+
+    public static HashMap<Integer, Grupo> getGrupos() {
+        return grupos;
+    }
+
+    public static void setGrupos(HashMap<Integer, Grupo> grupos) {
+        Grupos.grupos = grupos;
+    }
+    
 }

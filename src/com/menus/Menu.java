@@ -171,6 +171,7 @@ public class Menu extends javax.swing.JFrame {
         Grupos.escribir();
         Monitores.escribir();
         Clientes.escribir();
+        System.out.println("Guardado correcto");
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

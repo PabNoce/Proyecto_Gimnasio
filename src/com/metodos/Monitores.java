@@ -110,4 +110,13 @@ public class Monitores {
           Conexion.guardarMonitores(monitores.get(key));
           }
     }
+
+    public static HashMap<Integer, Monitor> getMonitores() {
+        return monitores;
+    }
+
+    public static void setMonitores(HashMap<Integer, Monitor> monitores) {
+        Monitores.monitores = monitores;
+    }
+    
 }

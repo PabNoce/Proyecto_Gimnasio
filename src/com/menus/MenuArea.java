@@ -185,11 +185,8 @@ public class MenuArea extends javax.swing.JFrame {
             tabla.removeRow(i);
             i -= 1;
         }
-
         HashMap<Integer, Area> areas = Areas.getAreas();
-
         for (int key : areas.keySet()) {
-
             String[] fila = new String[2];
             fila[0] = String.valueOf(areas.get(key).getIdArea());
             fila[1] = areas.get(key).getNomeArea();

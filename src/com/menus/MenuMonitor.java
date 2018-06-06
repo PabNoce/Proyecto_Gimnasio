@@ -5,13 +5,20 @@
  */
 package com.menus;
 
+import com.administracion.Monitor;
+import com.metodos.Monitores;
+import java.util.HashMap;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author asotodominguez
  */
 public class MenuMonitor extends javax.swing.JFrame {
+    
+    DefaultTableModel tabla = new DefaultTableModel();
 
     /**
      * Creates new form MenuMonitor
@@ -20,6 +27,11 @@ public class MenuMonitor extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        tabla.addColumn("ID");
+        tabla.addColumn("Nombre");
+        tabla.addColumn("Sueldo");
+        tabla.addColumn("Grupo");
+        jTable1.setModel(tabla);
     }
 
     /**
@@ -45,21 +57,19 @@ public class MenuMonitor extends javax.swing.JFrame {
         bRegresar1 = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         tNombre = new javax.swing.JTextField();
         tIdGrupo = new javax.swing.JTextField();
-        bRegresar2 = new javax.swing.JButton();
-        tId = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
-        tSueldo = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         bAñadir = new javax.swing.JButton();
         bBorrar = new javax.swing.JButton();
-        bBuscar = new javax.swing.JButton();
+        bMostrar = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
+        jButtonAtras = new javax.swing.JButton();
+        jButtonAsignar = new javax.swing.JButton();
+        jButtonDesasignar = new javax.swing.JButton();
 
         jLabel1.setText("Cliente:");
 
@@ -86,20 +96,9 @@ public class MenuMonitor extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel7.setText("Id");
-
         jLabel8.setText("Id Grupo");
 
         jLabel9.setText("Nombre");
-
-        bRegresar2.setText("Regresar");
-        bRegresar2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bRegresar2ActionPerformed(evt);
-            }
-        });
-
-        jLabel10.setText("Sueldo");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -109,7 +108,7 @@ public class MenuMonitor extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "ID", "ID GRUPO", "NOMBRE", "SUELDO"
+                "ID", "Nombre", "Sueldo", "Grupo"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
@@ -128,14 +127,35 @@ public class MenuMonitor extends javax.swing.JFrame {
             }
         });
 
-        bBuscar.setText("Buscar");
-        bBuscar.addActionListener(new java.awt.event.ActionListener() {
+        bMostrar.setText("Mostrar");
+        bMostrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bBuscarActionPerformed(evt);
+                bMostrarActionPerformed(evt);
             }
         });
 
         jLabel12.setText("Administración de monitores");
+
+        jButtonAtras.setText("Artas");
+        jButtonAtras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAtrasActionPerformed(evt);
+            }
+        });
+
+        jButtonAsignar.setText("Asignar");
+        jButtonAsignar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAsignarActionPerformed(evt);
+            }
+        });
+
+        jButtonDesasignar.setText("Desasignar grupo");
+        jButtonDesasignar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonDesasignarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -147,28 +167,27 @@ public class MenuMonitor extends javax.swing.JFrame {
                     .addComponent(jLabel12)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel9))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(tNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
+                            .addComponent(tIdGrupo))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(bAñadir)
+                            .addComponent(jButtonAsignar))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel8)
-                                    .addComponent(jLabel9)
-                                    .addComponent(jLabel7)
-                                    .addComponent(jLabel10))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(tSueldo, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tId, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tIdGrupo, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(bAñadir)
+                                .addComponent(bMostrar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(bBorrar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(bBuscar)))
-                        .addGap(30, 30, 30)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(bRegresar2))))
+                                .addGap(18, 18, 18)
+                                .addComponent(jButtonDesasignar))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jButtonAtras)))))
                 .addContainerGap(42, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -176,31 +195,29 @@ public class MenuMonitor extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(35, 35, 35)
                 .addComponent(jLabel12)
-                .addGap(33, 33, 33)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel7)
-                            .addComponent(tId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel8)
-                            .addComponent(tIdGrupo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
+                            .addComponent(bMostrar)
+                            .addComponent(bBorrar)
+                            .addComponent(jButtonDesasignar))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(27, 27, 27))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel9)
-                            .addComponent(tNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
+                            .addComponent(tNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(bAñadir))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel10)
-                            .addComponent(tSueldo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bAñadir)
-                    .addComponent(bRegresar2)
-                    .addComponent(bBorrar)
-                    .addComponent(bBuscar))
+                            .addComponent(jLabel8)
+                            .addComponent(tIdGrupo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonAsignar))
+                        .addGap(72, 72, 72)))
+                .addComponent(jButtonAtras)
                 .addContainerGap(42, Short.MAX_VALUE))
         );
 
@@ -209,38 +226,75 @@ public class MenuMonitor extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void bRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bRegresarActionPerformed
-        this.setVisible(false);
-        new Menu().setVisible(true);
     }//GEN-LAST:event_bRegresarActionPerformed
 
-    private void bRegresar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bRegresar2ActionPerformed
-        this.setVisible(false);
-        new Menu().setVisible(true);
-    }//GEN-LAST:event_bRegresar2ActionPerformed
-
     private void bAñadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAñadirActionPerformed
-        // TODO add your handling code here:
+        String nombre = tNombre.getText();
+        Monitores.crear(nombre);
     }//GEN-LAST:event_bAñadirActionPerformed
 
     private void bBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bBorrarActionPerformed
-        // TODO add your handling code here:
+        try {
+            int id = Integer.parseInt(String.valueOf(jTable1.getValueAt(jTable1.getSelectedRow(), jTable1.getSelectedColumn())));
+            Monitores.eliminar(id);
+        } catch (ArrayIndexOutOfBoundsException ex) {
+            JOptionPane.showMessageDialog(rootPane, "no has seleccionado ninguna id");
+        }          // TODO add your handling code here:
     }//GEN-LAST:event_bBorrarActionPerformed
 
-    private void bBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bBuscarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_bBuscarActionPerformed
+    private void bMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bMostrarActionPerformed
+        for (int i = 0; i < tabla.getRowCount(); i++) {
+            tabla.removeRow(i);
+            i -= 1;
+        }
+        HashMap<Integer, Monitor> monitores = Monitores.getMonitores();
+        for (int key : monitores.keySet()) {
+            String[] fila = new String[4];
+            fila[0] = String.valueOf(monitores.get(key).getID());
+            fila[1] = monitores.get(key).getNome();
+            fila[2] = String.valueOf(monitores.get(key).getSueldo());
+            fila[3] = String.valueOf(monitores.get(key).getGrupo());
+            tabla.addRow(fila);
+            jTable1.setModel(tabla);
+        }         // TODO add your handling code here:
+    }//GEN-LAST:event_bMostrarActionPerformed
+
+    private void jButtonAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAtrasActionPerformed
+        this.setVisible(false);
+        new Menu().setVisible(true);
+    }//GEN-LAST:event_jButtonAtrasActionPerformed
+
+    private void jButtonAsignarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAsignarActionPerformed
+        try {
+            int id = Integer.parseInt(String.valueOf(jTable1.getValueAt(jTable1.getSelectedRow(), jTable1.getSelectedColumn())));
+            int idGrupo = Integer.parseInt(tIdGrupo.getText());
+            Monitores.asignarGrupo(id, idGrupo);
+        } catch (ArrayIndexOutOfBoundsException ex) {
+            JOptionPane.showMessageDialog(rootPane, "no has seleccionado ninguna id");
+        }
+    }//GEN-LAST:event_jButtonAsignarActionPerformed
+
+    private void jButtonDesasignarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDesasignarActionPerformed
+        try {
+            int id = Integer.parseInt(String.valueOf(jTable1.getValueAt(jTable1.getSelectedRow(), jTable1.getSelectedColumn())));
+            Monitores.desasignarGrupo(id);
+        } catch (ArrayIndexOutOfBoundsException ex) {
+            JOptionPane.showMessageDialog(rootPane, "no has seleccionado ninguna id");
+        }        
+    }//GEN-LAST:event_jButtonDesasignarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -281,12 +335,13 @@ public class MenuMonitor extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bAñadir;
     private javax.swing.JButton bBorrar;
-    private javax.swing.JButton bBuscar;
+    private javax.swing.JButton bMostrar;
     private javax.swing.JButton bRegresar;
     private javax.swing.JButton bRegresar1;
-    private javax.swing.JButton bRegresar2;
+    private javax.swing.JButton jButtonAsignar;
+    private javax.swing.JButton jButtonAtras;
+    private javax.swing.JButton jButtonDesasignar;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
@@ -294,7 +349,6 @@ public class MenuMonitor extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
@@ -302,10 +356,8 @@ public class MenuMonitor extends javax.swing.JFrame {
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField tGrupo;
     private javax.swing.JTextField tGrupo1;
-    private javax.swing.JTextField tId;
     private javax.swing.JTextField tIdGrupo;
     private javax.swing.JTextField tNombre;
-    private javax.swing.JTextField tSueldo;
     private javax.swing.JTextField tSuscripcion;
     private javax.swing.JTextField tSuscripcion1;
     // End of variables declaration//GEN-END:variables
